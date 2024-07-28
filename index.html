@@ -160,6 +160,18 @@
         .occupied {
             background-color: #dc3545; /* Red for occupied */
         }
+
+        .map-container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .map-container iframe {
+            border: 0;
+            width: 100%;
+            height: 450px;
+            max-width: 100%;
+        }
     </style>
 </head>
 
@@ -237,13 +249,20 @@
         </div>
     </div>
 
+    <!-- Location Section -->
+    <div class="container my-3" id="map">
+        <h2 class="text-center mb-4">Our Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d580.8744943293094!2d124.01262827576201!3d10.304231060345598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a997375903bd2d%3A0x4dee91ea1c57dba6!2sR.Aying%20Boarding%20House%20for%20Rent!5e1!3m2!1sen!2sph!4v1719675522218!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
     <!-- Inquiry Modal -->
     <div class="modal fade" id="inquireModal" tabindex="-1" aria-labelledby="inquireModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="inquireModalLabel">Inquiry</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post" action="">
                     <div class="modal-body">
@@ -258,7 +277,7 @@
                         <div class="mb-3">
                             <label for="room" class="form-label">Room Inquire<span class="text-danger">*</span></label>
                             <select class="form-select" id="room" name="room" required>
-                                <option value="" selected disabled>Select Room</option>
+                                <option value="" selected disabled>Select Available Room</option>
                                 <!-- Options will be added by JavaScript -->
                             </select>
                         </div>
@@ -281,61 +300,59 @@
 
     <!-- Custom JS -->
     <script>
-     document.addEventListener('DOMContentLoaded', function() {
-    const roomSlotsContainer = document.getElementById('room-slots-container');
-    const roomSelect = document.getElementById('room');
+        document.addEventListener('DOMContentLoaded', function() {
+            const roomSlotsContainer = document.getElementById('room-slots-container');
+            const roomSelect = document.getElementById('room');
 
-    // Define room data
-    const rooms = [
-        { id: 1, imageUrl: 'source/Image/room1.jfif', title: 'Room 1', description: 'Comfortable and spacious room with all amenities.', status: 'available' },
-        { id: 2, imageUrl: 'source/Image/room2.jfif', title: 'Room 2', description: 'Cozy room with a beautiful view.', status: 'occupied' },
-        { id: 3, imageUrl: 'source/Image/room3.jfif', title: 'Room 3', description: 'Modern room with great amenities.', status: 'available' },
-        { id: 4, imageUrl: 'source/Image/room4.jfif', title: 'Room 4', description: 'Modern room with great amenities.', status: 'available' },
-        // Add more rooms as needed
-    ];
+            // Define room data
+            const rooms = [
+                { id: 1, imageUrl: 'source/Image/room1.jfif', title: 'Room 1', description: 'Comfortable and spacious room with all amenities.', status: 'available' },
+                { id: 2, imageUrl: 'source/Image/room2.jfif', title: 'Room 2', description: 'Cozy room with a beautiful view.', status: 'occupied' },
+                { id: 3, imageUrl: 'source/Image/room3.jfif', title: 'Room 3', description: 'Modern room with great amenities.', status: 'available' },
+                { id: 4, imageUrl: 'source/Image/room4.jfif', title: 'Room 4', description: 'Modern room with great amenities.', status: 'available' },
+                // Add more rooms as needed
+            ];
 
-    // Loop to create room slot elements and populate inquiry dropdown
-    rooms.forEach(room => {
-        // Create room slot elements for all rooms
-        const roomSlot = document.createElement('div');
-        roomSlot.classList.add('col-md-4', 'col-sm-6', 'mb-4');
+            // Loop to create room slot elements and populate inquiry dropdown
+            rooms.forEach(room => {
+                // Create room slot elements for all rooms
+                const roomSlot = document.createElement('div');
+                roomSlot.classList.add('col-md-4', 'col-sm-6', 'mb-4');
 
-        roomSlot.innerHTML = `
-            <a href="room${room.id}.html">
-                <div class="room-slot">
-                    <img src="${room.imageUrl}" alt="Room Image">
-                    <h3>${room.title}</h3>
-                    <p>${room.description}</p>
-                    <div class="status-badge ${room.status}">${capitalizeFirstLetter(room.status)}</div>
-                </div>
-            </a>
-        `;
+                roomSlot.innerHTML = `
+                    <a href="room${room.id}.html">
+                        <div class="room-slot">
+                            <img src="${room.imageUrl}" alt="Room Image">
+                            <h3>${room.title}</h3>
+                            <p>${room.description}</p>
+                            <div class="status-badge ${room.status}">${capitalizeFirstLetter(room.status)}</div>
+                        </div>
+                    </a>
+                `;
 
-        roomSlotsContainer.appendChild(roomSlot);
+                roomSlotsContainer.appendChild(roomSlot);
 
-        // Add only available rooms to the inquiry dropdown
-        if (room.status === 'available') {
-            const option = document.createElement('option');
-            option.value = room.id;
-            option.textContent = room.title;
-            roomSelect.appendChild(option);
-        }
-    });
+                // Add only available rooms to the inquiry dropdown
+                if (room.status === 'available') {
+                    const option = document.createElement('option');
+                    option.value = room.id;
+                    option.textContent = room.title;
+                    roomSelect.appendChild(option);
+                }
+            });
 
-    // Function to capitalize the first letter of a string
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+            // Function to capitalize the first letter of a string
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
 
-    // Existing code for Inquiry Modal
-    document.getElementById('inquireLink').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default link behavior
-        var inquireModal = new bootstrap.Modal(document.getElementById('inquireModal'));
-        inquireModal.show();
-    });
-});
-
-
+            // Existing code for Inquiry Modal
+            document.getElementById('inquireLink').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+                var inquireModal = new bootstrap.Modal(document.getElementById('inquireModal'));
+                inquireModal.show();
+            });
+        });
     </script>
 </body>
 
