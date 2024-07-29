@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 1 - R.Aying Boarding House</title>
+    <link rel="shortcut icon" type="image/x-icon" href="source/Image/Raying.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .room-header {
+            background-image: url('source/Image/bh.webp'); /* Replace with actual header image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .room-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .room-header p {
+            font-size: 1.2rem;
+        }
+
+        .room-details {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .room-images {
+            margin-bottom: 20px;
+        }
+
+        .room-images img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .room-description {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-description h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .room-description p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .amenities {
+            margin-top: 20px;
+        }
+
+        .amenities h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .amenities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .amenities ul li {
+            font-size: 1.2rem;
+            padding: 5px 0;
+        }
+
+        .book-now-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .book-now-btn a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 0 5px;
+        }
+
+        .book-now-btn a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Room Details Section -->
+    <div class="container room-details">
+        <!-- Room Images -->
+        <div class="room-images">
+            <img src="source/Image/room1.jfif" alt="Room 1" class="img-fluid">
+        </div>
+
+        <!-- Room Description -->
+        <div class="room-description">
+            <h2>Room Overview</h2>
+            <p>
+                Welcome to Room 1 at R.Aying Boarding House. This room is designed to provide you with maximum comfort and convenience. It features modern furnishings, a comfortable bed, and all the necessary amenities to ensure a pleasant stay. Enjoy the spacious environment and beautiful decor.
+            </p>
+            <p>
+                The room comes equipped with air conditioning, high-speed internet, and a flat-screen TV. The en-suite bathroom is well-appointed with modern fixtures and toiletries. Whether you're here for a short stay or a longer visit, Room 1 offers a cozy retreat with everything you need.
+            </p>
+
+            <!-- Amenities List -->
+            <div class="amenities">
+                <h3>Amenities</h3>
+                <ul>
+                    <li><i class="fas fa-bath"></i> Own CR</li>
+                    <li><i class="fas fa-bed"></i> Single Bed</li>
+                    <li><i class="fas fa-fan"></i> Electric Fan</li>
+                    <li><i class="fas fa-water"></i> Electric Submeter</li>
+                    <li><i class="fas fa-tint"></i> Water</li>
+                    <li><i class="fas fa-table"></i> Table</li>
+                    <li><i class="fas fa-chair"></i> 2 Chairs</li>
+                    <li><i class="fas fa-box"></i> Cabinet</li>
+                </ul>
+            </div>
+
+            <!-- Booking Buttons -->
+            <div class="book-now-btn">
+                <a href="index.html">Return</a>
+                <a href="#inquireModal" data-bs-toggle="modal" data-bs-target="#inquireModal">Reserve Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 R.Aying Boarding House. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
